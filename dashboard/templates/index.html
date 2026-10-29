@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VEYON OPS — Enterprise Cyber Administration Platform</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="app-container">
+        <!-- SIDEBAR -->
+        <aside id="sidebar">
+            <div class="brand-header">
+                <div class="brand-logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                </div>
+                <div class="brand-text-block">
+                    <div class="brand-title-text">
+                        <span>VEYON OPS</span>
+                    </div>
+                    <div class="brand-subtitle-badge">ENTERPRISE v4.11</div>
+                </div>
+            </div>
+
+            <ul class="nav-menu">
+                <div class="nav-section-label">Fleet Operations</div>
+
+                <li class="nav-item">
+                    <a class="nav-link active" data-tab="overview">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect></svg>
+                        <span>Overview</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-tab="master">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                        <span>Master Setup</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-tab="slaves">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        <span>Slave Management</span>
+                        <span class="nav-badge-pill active-indicator" id="sidebar-slave-badge">1 Online</span>
+                    </a>
+                </li>
+
+                <div class="nav-section-label" style="margin-top: 10px;">Configuration & Tasks</div>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-tab="profiles">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        <span>Profiles & JSON</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-tab="agy">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                        <span>AGY Task Center</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-tab="diagnostics">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                        <span>Diagnostics</span>
+                        <span class="nav-badge-pill" id="sidebar-diag-badge">10/10</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-tab="logs">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                        <span>Audit Logs</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Sidebar Telemetry Widget -->
+            <div class="sidebar-footer">
+                <div class="sidebar-telemetry-card">
+                    <div class="telemetry-row">
+                        <span class="telemetry-label">
+                            <span class="pulse-dot pulse"></span>
+                            <span id="sidebar-role-text">Master PC</span>
+                        </span>
+                        <span class="telemetry-value" id="sidebar-clock-time">--:--:--</span>
+                    </div>
+                    <div class="telemetry-row" style="opacity: 0.75;">
+                        <span class="telemetry-label">Service Core</span>
+                        <span class="telemetry-value" id="sidebar-service-quick">VeyonService</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN VIEWPORT -->
+        <div id="main-content">
+            <!-- TOP HEADER -->
+            <header id="top-header">
+                <div class="header-left">
+                    <span class="breadcrumb-tag">Veyon Fleet</span>
+                    <h1 class="page-heading" id="current-page-title">Overview</h1>
+                    <div class="header-status-pill">
+                        <span class="pulse-dot pulse"></span>
+                        <span id="system-overall-status">All Systems Operational</span>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <!-- Privilege Badge -->
+                    <div id="privilege-badge" class="privilege-chip standard">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        <span>Checking Privileges...</span>
+                    </div>
+
+                    <!-- User & Host Chip -->
+                    <div class="user-profile-chip">
+                        <div class="user-avatar-circle" id="user-avatar-initials">BS</div>
+                        <div class="user-info-text">
+                            <span class="user-name-line" id="system-user-badge">USER</span>
+                            <span class="user-host-line">Host: <span id="system-hostname">LOCAL</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Refresh Button -->
+                    <button class="header-action-btn" id="btn-refresh-all" title="Refresh Dashboard Telemetry (Instant)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                    </button>
+                </div>
+            </header>
+
+            <!-- CONTENT BODY -->
+            <main class="content-body">
+
+                <!-- ================= PAGE 1: OVERVIEW ================= -->
+                <section class="tab-pane active" id="tab-overview">
+                    <!-- 4 MODERN TELEMETRY STAT CARDS -->
+                    <div class="grid-cards">
+                        <!-- Card 1: Role -->
+                        <div class="stat-card-modern">
+                            <div class="stat-card-top-row">
+                                <div class="stat-icon-wrapper">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                                </div>
+                                <span class="stat-status-chip cyan" id="card-role-chip">CONTROLLER</span>
+                            </div>
+                            <span class="stat-label-text">System Role & Identity</span>
+                            <div class="stat-hero-value" id="card-master-status">Master</div>
+                            <div class="stat-meta-line" id="card-master-keys">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                <span>Keys: teacher/private & public</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Clients -->
+                        <div class="stat-card-modern emerald">
+                            <div class="stat-card-top-row">
+                                <div class="stat-icon-wrapper">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                                </div>
+                                <span class="stat-status-chip success" id="card-reach-chip">100% REACHABLE</span>
+                            </div>
+                            <span class="stat-label-text">Managed Client Fleet</span>
+                            <div class="stat-hero-value" id="card-slave-count">1 / 1</div>
+                            <div class="stat-meta-line" id="card-slave-sub">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>1 verified online via TCP 11100</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Windows Service -->
+                        <div class="stat-card-modern amber">
+                            <div class="stat-card-top-row">
+                                <div class="stat-icon-wrapper">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                                </div>
+                                <span class="stat-status-chip success" id="card-service-chip">ACTIVE</span>
+                            </div>
+                            <span class="stat-label-text">Veyon Windows Service</span>
+                            <div class="stat-hero-value" id="card-service-status">Running</div>
+                            <div class="stat-meta-line" id="card-service-name">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                <span>Startup: Automatic | LocalSystem</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Ports -->
+                        <div class="stat-card-modern purple">
+                            <div class="stat-card-top-row">
+                                <div class="stat-icon-wrapper">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
+                                </div>
+                                <span class="stat-status-chip success" id="card-port-chip">LISTENING</span>
+                            </div>
+                            <span class="stat-label-text">Port 11100 & Transport</span>
+                            <div class="stat-hero-value" id="card-port-status" style="font-size: 21px;">11100 ACTIVE</div>
+                            <div class="stat-meta-line" id="card-server-proc">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                                <span>Server Process: Running</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ENVIRONMENT TELEMETRY MATRIX -->
+                    <div class="panel-modern">
+                        <div class="panel-header-modern">
+                            <div class="panel-title-group">
+                                <div class="panel-title-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                                </div>
+                                <span class="panel-title-text">Host Telemetry & Environment Matrix</span>
+                            </div>
+                            <span class="badge-pill info" id="overview-os-tag">Windows 10/11</span>
+                        </div>
+                        <div class="panel-body-modern">
+                            <div class="env-telemetry-grid">
+                                <div class="env-telemetry-tile">
+                                    <div class="env-tile-header">
+                                        <span class="env-tile-label">Veyon Engine</span>
+                                        <span class="badge-pill success">Installed</span>
+                                    </div>
+                                    <div class="env-tile-val" id="env-veyon-version" style="color: var(--accent-cyan);">4.11.1 (64-bit)</div>
+                                </div>
+
+                                <div class="env-telemetry-tile">
+                                    <div class="env-tile-header">
+                                        <span class="env-tile-label">CLI Executable</span>
+                                        <button class="copy-mini-btn" onclick="copyText('env-cli-path')" title="Copy Path">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                        </button>
+                                    </div>
+                                    <div class="env-tile-val" id="env-cli-path" style="font-size: 11.5px; color: var(--text-secondary);">C:\Program Files\Veyon\veyon-cli.exe</div>
+                                </div>
+
+                                <div class="env-telemetry-tile">
+                                    <div class="env-tile-header">
+                                        <span class="env-tile-label">Primary IPv4</span>
+                                        <button class="copy-mini-btn" onclick="copyText('env-ip-address')" title="Copy IP">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                        </button>
+                                    </div>
+                                    <div class="env-tile-val" id="env-ip-address" style="color: var(--accent-emerald-light);">10.10.23.231</div>
+                                </div>
+
+                                <div class="env-telemetry-tile">
+                                    <div class="env-tile-header">
+                                        <span class="env-tile-label">User & Session Token</span>
+                                        <span class="badge-pill warning" id="env-uac-badge">Limited UAC</span>
+                                    </div>
+                                    <div class="env-tile-val" id="env-user-priv" style="font-size: 12px; color: var(--text-secondary);">Balamurugan S</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QUICK ADMINISTRATION ACTIONS HUB -->
+                    <div class="panel-modern">
+                        <div class="panel-header-modern">
+                            <div class="panel-title-group">
+                                <div class="panel-title-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                                </div>
+                                <span class="panel-title-text">Quick Command & Administration Hub</span>
+                            </div>
+                        </div>
+                        <div class="panel-body-modern">
+                            <div class="quick-actions-bar">
+                                <button class="btn-modern btn-primary" id="btn-quick-master">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                                    <span>Configure as Master</span>
+                                </button>
+                                <button class="btn-modern btn-secondary" id="btn-quick-verify">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                                    <span>Run Health Check</span>
+                                </button>
+                                <button class="btn-modern btn-secondary" id="btn-quick-restart-svc">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>
+                                    <span>Restart Veyon Service</span>
+                                </button>
+                                <button class="btn-modern btn-emerald" id="btn-quick-download-pubkey">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                    <span>Export Public Key (.pem)</span>
+                                </button>
+                                <button class="btn-modern btn-secondary" onclick="navigateToTab('slaves')">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                                    <span>Manage Client Fleet</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RECENT PLATFORM AUDIT EVENTS -->
+                    <div class="panel-modern">
+                        <div class="panel-header-modern">
+                            <div class="panel-title-group">
+                                <div class="panel-title-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                </div>
+                                <span class="panel-title-text">Recent Operational Events</span>
+                            </div>
+                            <button class="btn-modern btn-secondary btn-sm" onclick="navigateToTab('logs')">
+                                <span>View Full Audit Trail</span>
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="modern-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 180px;">Time / Activity</th>
+                                        <th style="width: 100px;">Severity</th>
+                                        <th style="width: 120px;">Outcome</th>
+                                        <th>Event Operation</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="overview-recent-logs">
+                                    <tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: 24px;">Loading live activity stream...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ================= PAGE 2: MASTER CONFIGURATION ================= -->
+                <section class="tab-pane" id="tab-master">
+                    <div class="panel-modern">
+                        <div class="panel-header-modern">
+                            <div class="panel-title-group">
+                                <div class="panel-title-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                                </div>
+                                <span class="panel-title-text">Master PC Auto-Configuration Controls</span>
+                            </div>
+                            <span class="badge-pill info">Teacher / Administration Host</span>
+                        </div>
+                        <div class="panel-body-modern">
+                            <form id="form-master-setup">
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                                    <div class="form-group-modern">
+                                        <label class="form-label-modern">Authentication Key Pair Name</label>
+                                        <input type="text" class="form-control-modern mono" id="m-key-name" value="teacher" required>
+                                        <span style="font-size: 11px; color: var(--text-muted); display: block; margin-top: 5px;">4096-bit RSA identifier. Private key is restricted to Administrators only.</span>
+                                    </div>
+                                    <div class="form-group-modern">
+                                        <label class="form-label-modern">Primary Classroom / Location Name</label>
+                                        <input type="text" class="form-control-modern" id="m-room-name" value="Default Classroom" required>
+                                        <span style="font-size: 11px; color: var(--text-muted); display: block; margin-top: 5px;">Room identifier registered in Veyon Master network directory.</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group-modern">
+                                    <label class="form-label-modern">Authorized Student Client Hostnames or IPs (Comma Separated)</label>
+                                    <input type="text" class="form-control-modern mono" id="m-client-hosts" placeholder="e.g. 192.168.1.101, 192.168.1.102, Student-PC-01">
+                                    <span style="font-size: 11px; color: var(--text-muted); display: block; margin-top: 5px;">Registered automatically into Veyon's internal BuiltinDirectory.</span>
+                                </div>
+
+                                <div class="form-group-modern" style="margin-top: 14px;">
+                                    <label style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                        <input type="checkbox" id="m-force" style="accent-color: var(--accent-cyan); width: 16px; height: 16px;">
+                                        <span>Overwrite existing keys and registry configurations without prompt (<code>-Force</code>)</span>
+                                    </label>
+                                </div>
+
+                                <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+                                    <button type="submit" class="btn-modern btn-primary" id="btn-run-master-setup">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                        <span>Run Master Auto-Configuration</span>
+                                    </button>
+                                    <button type="button" class="btn-modern btn-secondary" id="btn-preview-master">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                        <span>Preview Changes</span>
+                                    </button>
+                                    <button type="button" class="btn-modern btn-secondary" id="btn-validate-master">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                                        <span>Validate Master Health</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- PUBLIC KEY EXPORT BOX -->
+                    <div class="panel-modern">
+                        <div class="panel-header-modern">
+                            <div class="panel-title-group">
+                                <div class="panel-title-icon" style="color: var(--accent-emerald-light);">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                </div>
+                                <span class="panel-title-text">Master Public Key Distribution for Student PCs</span>
+                            </div>
+                        </div>
+                        <div class="panel-body-modern">
+                            <p style="color: var(--text-secondary); margin-bottom: 14px; font-size: 13px; line-height: 1.6;">
+                                Distribute this public key file to all Student/Client workstations. <strong>Security rule: Private keys must NEVER be transferred to Student machines.</strong>
+                            </p>
+                            <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
+                                <button class="btn-modern btn-emerald" onclick="window.location.href='/api/keys/public?download=true'">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                    <span>Download teacher_public_key.pem</span>
+                                </button>
+                                <span class="mono" style="font-size: 11.5px; color: var(--text-muted); background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-subtle);">
+                                    Internal path: config\keys\teacher_public_key.pem
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LIVE EXECUTION TERMINAL -->
+                    <div class="terminal-window">
+                        <div class="terminal-titlebar">
+                            <div class="terminal-dots">
+                                <span class="t-dot red"></span>
+                                <span class="t-dot yellow"></span>
+                                <span class="t-dot green"></span>
+                            </div>
+                            <div class="terminal-titlebar-text">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                                <span>POWERSHELL 7 AUTOMATION RUNNER</span>
+                            </div>
+                            <button class="btn-modern btn-secondary btn-sm" id="btn-clear-terminal">Clear Console</button>
+                        </div>
+                        <div class="terminal-content" id="master-terminal">Ready. Click "Run Master Auto-Configuration" or "Validate Master Health" above to stream execution logs.</div>
+                    </div>
+                </section>
+
+                <!-- ================= PAGE 3: SLAVE MANAGEMENT ================= -->
+                <section class="tab-pane" id="tab-slaves">
+                    <!-- CLIENT INVENTORY PANEL -->
+                    <div class="panel-modern">
+                        <div class="panel-header-modern">
+                            <div class="panel-title-group">
+                                <div class="panel-title-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                                </div>
+                                <span class="panel-title-text">Authorized Student Fleet & Workstations</span>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button class="btn-modern btn-primary btn-sm" id="btn-open-add-slave">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                    <span>Register Student PC</span>
+                                </button>
+                                <button class="btn-modern btn-secondary btn-sm" id="btn-test-all-slaves">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                                    <span>Probe All Sockets</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="modern-table">
+                                <thead>
+                                    <tr>
+                                        <th>Workstation</th>
+                                        <th>IPv4 / Hostname</th>
+                                        <th>Classroom</th>
+                                        <th>State</th>
+                                        <th>Ping</th>
+                                        <th>Port 11100</th>
+                                        <th>Last Verification</th>
+                                        <th style="text-align: right;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="slaves-table-body">
+                                    <tr><td colspan="8" style="text-align: center; color: var(--text-muted); padding: 24px;">Loading registered workstations...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- DEPLOYMENT MODES GRID -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+                        <!-- A. LOCAL CLIENT SETUP -->
+                        <div class="panel-modern">
+                            <div class="panel-header-modern">
+                                <div class="panel-title-group">
+                                    <span class="panel-title-text">A. Local Client Setup Command</span>
+                                </div>
+                                <span class="badge-pill success">Recommended</span>
+                            </div>
+                            <div class="panel-body-modern">
+                                <p style="color: var(--text-secondary); margin-bottom: 14px; font-size: 13px; line-height: 1.5;">
+                                    Execute this command in an <strong>Elevated PowerShell</strong> directly on the student workstation:
+                                </p>
+                                <div style="background: #04060a; padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 12px; color: var(--accent-cyan); word-break: break-all; margin-bottom: 14px;" id="slave-command-box">
+                                    .\install.ps1 -Role Slave -PublicKeyPath "\\master\keys\teacher_public_key.pem"
+                                </div>
+                                <button class="btn-modern btn-secondary btn-sm" id="btn-copy-slave-cmd">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copy Setup Command</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- B. REMOTE CLIENT DEPLOYMENT -->
+                        <div class="panel-modern">
+                            <div class="panel-header-modern">
+                                <div class="panel-title-group">
+                                    <span class="panel-title-text">B. Remote WinRM Transport</span>
+                                </div>
+                                <span class="badge-pill warning">Requires WinRM</span>
+                            </div>
+                            <div class="panel-body-modern">
+                                <p style="color: var(--text-secondary); margin-bottom: 14px; font-size: 13px; line-height: 1.5;">
+                                    Remote deployment requires <strong>Windows Remote Management (WinRM)</strong> listener enabled on port 5985:
+                                </p>
+                                <div style="display: flex; gap: 10px; margin-bottom: 12px;">
+                                    <input type="text" class="form-control-modern mono" id="remote-target-host" placeholder="Target client IP / hostname">
+                                    <button class="btn-modern btn-secondary btn-sm" id="btn-check-winrm">Test Transport</button>
+                                </div>
+                                <div id="winrm-test-status" style="font-size: 12px; color: var(--text-muted);">Enter a client hostname to verify remote transport availability.</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ================= PAGE 4: CONFIGURATION PROFILES ================= -->
+                <section class="tab-pane" id="tab-profiles">
+                    <div class="panel-modern">
+                        <div class="panel-header-modern">
+                            <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
+                                <span class="panel-title-text">JSON Profile:</span>
+                                <select class="form-control-modern" id="profile-selector" style="width: 220px; padding: 6px 12px;">
+                                    <option value="master">veyon-master.json</option>
+                                    <option value="slave">veyon-slave.json</option>
+                                    <option value="unified">veyon-unified.json</option>
+                                </select>
+                            </div>
+                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                <button class="btn-modern btn-secondary btn-sm" id="btn-format-json">Format JSON</button>
+                                <button class="btn-modern btn-secondary btn-sm" id="btn-diff-profile">Preview Diff</button>
+                                <button class="btn-modern btn-secondary btn-sm" id="btn-download-profile">Export File</button>
+                                <button class="btn-modern btn-primary btn-sm" id="btn-save-profile">Save to Disk</button>
+                                <button class="btn-modern btn-emerald btn-sm" id="btn-apply-profile">Apply to System</button>
+                            </div>
+                        </div>
+                        <div class="panel-body-modern" style="padding: 16px;">
+                            <textarea class="form-control-modern mono" id="json-editor" style="height: 440px; font-size: 13px; resize: vertical; line-height: 1.5; background: #04060a;"></textarea>
+                            <div id="json-validation-status" style="margin-top: 10px; font-size: 12px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- VERSIONED BACKUPS PANEL -->
+                    <div class="panel-modern">
+                        <div class="panel-header-modern">
+                            <span class="panel-title-text">Configuration Snapshots & Versioned Backups</span>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="modern-table">
+                                <thead>
+                                    <tr>
+                                        <th>Snapshot Time</th>
+                                        <th>Profile</th>
+                                        <th>Backup Filename</th>
+                                        <th>Size</th>
+                                        <th style="text-align: right;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="backups-table-body">
+                                    <tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: 20px;">No backups recorded yet.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ================= PAGE 5: AGY TASK CENTER ================= -->
+                <section class="tab-pane" id="tab-agy">
+                    <div class="panel-modern">
+                        <div class="panel-header-modern">
+                            <div class="panel-title-group">
+                                <div class="panel-title-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                                </div>
+                                <span class="panel-title-text">Antigravity (AGY) Integration Engine</span>
+                            </div>
+                            <span class="badge-pill warning" id="agy-badge-status">Checking AGY...</span>
+                        </div>
+                        <div class="panel-body-modern">
+                            <div id="agy-status-details" style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                                Inspecting local Antigravity daemon and remote endpoints...
+                            </div>
+                            <div id="agy-auth-warning" style="display: none; background: rgba(244, 63, 94, 0.1); border: 1px solid rgba(244, 63, 94, 0.3); border-radius: var(--radius-sm); padding: 14px; color: #fca5a5; margin-bottom: 16px; font-size: 13px;">
+                                <strong>Authentication Notice:</strong> AGY integration unavailable — use the supported local CLI or continue configuration independently. (HTTP 401 Unauthorized)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- APPROVED AUTOMATION TASKS -->
+                    <div class="panel-modern">
+                        <div class="panel-header-modern">
+                            <span class="panel-title-text">Approved Whitelisted Automation Tasks</span>
+                        </div>
+                        <div class="panel-body-modern">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+                                <div class="stat-card-modern">
+                                    <h4 style="color: var(--text-primary); margin-bottom: 6px; font-size: 14.5px;">Master Health & Reconfig</h4>
+                                    <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 14px; line-height: 1.5;">Applies Master configuration and refreshes service registration.</p>
+                                    <button class="btn-modern btn-primary btn-sm" onclick="runAgyTask('master_reconfigure')">Dispatch Task</button>
+                                </div>
+
+                                <div class="stat-card-modern emerald">
+                                    <h4 style="color: var(--text-primary); margin-bottom: 6px; font-size: 14.5px;">Slave Key Isolation Audit</h4>
+                                    <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 14px; line-height: 1.5;">Verifies no private keys are exposed or installed on client systems.</p>
+                                    <button class="btn-modern btn-emerald btn-sm" onclick="runAgyTask('audit_slave_security')">Dispatch Task</button>
+                                </div>
+
+                                <div class="stat-card-modern amber">
+                                    <h4 style="color: var(--text-primary); margin-bottom: 6px; font-size: 14.5px;">Full System Verification</h4>
+                                    <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 14px; line-height: 1.5;">Executes comprehensive 15-point verification matrix.</p>
+                                    <button class="btn-modern btn-secondary btn-sm" onclick="runAgyTask('verify_all')">Dispatch Task</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AGY EXECUTION LOG -->
+                    <div class="terminal-window">
+                        <div class="terminal-titlebar">
+                            <div class="terminal-dots">
+                                <span class="t-dot red"></span>
+                                <span class="t-dot yellow"></span>
+                                <span class="t-dot green"></span>
+                            </div>
+                            <span class="terminal-titlebar-text">TASK EXECUTION LOG</span>
+                        </div>
+                        <div class="terminal-content" id="agy-terminal">Ready. Select an approved automation task above.</div>
+                    </div>
+                </section>
+
+                <!-- ================= PAGE 6: DIAGNOSTICS ================= -->
+                <section class="tab-pane" id="tab-diagnostics">
+                    <div class="panel-modern">
+                        <div class="panel-header-modern">
+                            <div class="panel-title-group">
+                                <div class="panel-title-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                                </div>
+                                <span class="panel-title-text">10-Point System Diagnostics Matrix</span>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button class="btn-modern btn-primary btn-sm" id="btn-run-diagnostics">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                                    <span>Re-Run Diagnostics</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="modern-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 250px;">Diagnostic Check</th>
+                                        <th style="width: 100px;">Status</th>
+                                        <th>Detected System State</th>
+                                        <th>Actionable Remediation</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="diagnostics-table-body">
+                                    <tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 24px;">Running diagnostic suite...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ================= PAGE 7: LOGS ================= -->
+                <section class="tab-pane" id="tab-logs">
+                    <div class="panel-modern">
+                        <div class="panel-header-modern">
+                            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                                <span class="panel-title-text">Operations & Security Audit Trail</span>
+                                <select class="form-control-modern" id="log-filter-level" style="width: 130px; padding: 6px 10px;">
+                                    <option value="ALL">All Levels</option>
+                                    <option value="INFO">INFO</option>
+                                    <option value="EXEC">EXEC</option>
+                                    <option value="WARN">WARN</option>
+                                    <option value="ERROR">ERROR</option>
+                                </select>
+                                <input type="text" class="form-control-modern" id="log-search-input" placeholder="Search audit logs..." style="width: 200px; padding: 6px 12px;">
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button class="btn-modern btn-secondary btn-sm" id="btn-export-logs">Export CSV</button>
+                                <button class="btn-modern btn-secondary btn-sm" id="btn-refresh-logs">Refresh</button>
+                                <button class="btn-modern btn-danger btn-sm" id="btn-clear-logs">Clear Logs</button>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="modern-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 170px;">Timestamp</th>
+                                        <th style="width: 90px;">Severity</th>
+                                        <th style="width: 110px;">Outcome</th>
+                                        <th style="width: 180px;">Operation</th>
+                                        <th>Event Details</th>
+                                        <th style="width: 120px;">User</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="full-logs-body">
+                                    <tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 24px;">Loading logs...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- MODAL: REGISTER / EDIT STUDENT PC -->
+    <div class="modal-backdrop" id="modal-add-slave">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 class="modal-title">Register Student Workstation</h3>
+                <button class="modal-close-btn" onclick="closeModal('modal-add-slave')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="form-add-computer">
+                    <div class="form-group-modern">
+                        <label class="form-label-modern">Workstation Name</label>
+                        <input type="text" class="form-control-modern" id="new-comp-name" placeholder="e.g. Student-PC-01" required>
+                    </div>
+                    <div class="form-group-modern">
+                        <label class="form-label-modern">IPv4 Address or Hostname</label>
+                        <input type="text" class="form-control-modern mono" id="new-comp-host" placeholder="e.g. 192.168.1.101" required>
+                    </div>
+                    <div class="form-group-modern">
+                        <label class="form-label-modern">Assigned Classroom</label>
+                        <input type="text" class="form-control-modern" id="new-comp-room" value="Default Classroom" required>
+                    </div>
+                    <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px;">
+                        <button type="button" class="btn-modern btn-secondary" onclick="closeModal('modal-add-slave')">Cancel</button>
+                        <button type="submit" class="btn-modern btn-primary">Save Workstation</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: PREVIEW MASTER SETUP -->
+    <div class="modal-backdrop" id="modal-preview-master">
+        <div class="modal-dialog" style="max-width: 620px;">
+            <div class="modal-header">
+                <h3 class="modal-title">Preview Master Configuration Specification</h3>
+                <button class="modal-close-btn" onclick="closeModal('modal-preview-master')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="preview-master-content" style="font-family: var(--font-mono); font-size: 12.5px; line-height: 1.6; max-height: 380px; overflow-y: auto;">
+                    Loading preview...
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-modern btn-secondary" onclick="closeModal('modal-preview-master')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: DIFF PREVIEW -->
+    <div class="modal-backdrop" id="modal-diff">
+        <div class="modal-dialog" style="max-width: 720px;">
+            <div class="modal-header">
+                <h3 class="modal-title">Configuration Diff Preview</h3>
+                <button class="modal-close-btn" onclick="closeModal('modal-diff')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <pre id="diff-content" style="background: #04060a; padding: 16px; border-radius: var(--radius-sm); font-size: 12px; font-family: var(--font-mono); color: #cbd5e1; max-height: 400px; overflow: auto; white-space: pre-wrap; line-height: 1.6;"></pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-modern btn-secondary" onclick="closeModal('modal-diff')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: CONFIRM ACTION -->
+    <div class="modal-backdrop" id="modal-confirm">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 class="modal-title" id="confirm-modal-title">Confirm Action</h3>
+                <button class="modal-close-btn" onclick="closeModal('modal-confirm')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="confirm-modal-message" style="color: var(--text-secondary); line-height: 1.6;"></p>
+                <div id="confirm-modal-warning" style="margin-top: 14px; font-size: 12.5px; color: var(--accent-amber);"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-modern btn-secondary" onclick="closeModal('modal-confirm')">Cancel</button>
+                <button class="btn-modern btn-primary" id="confirm-modal-btn">Confirm & Execute</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING TOAST CONTAINER -->
+    <div id="toast-container"></div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

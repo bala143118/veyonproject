@@ -1,0 +1,11 @@
+# Security: Never commit private keys, credentials, or certificates
+*private*
+*.key
+*.pfx
+*.p12
+
+# Local test artifacts & runtime backups
+*export*.json
+*test*.json
+*.log
+backups/

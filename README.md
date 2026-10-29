@@ -8,6 +8,40 @@
 [![license](https://img.shields.io/badge/license-GPLv2-green.svg)](LICENSE)
 
 
+## VEYON OPS — Master/Slave Auto-Configuration & Administration Platform
+
+This repository includes **VEYON OPS**, an enterprise Windows automation platform and web dashboard for pairing, configuring, and monitoring Veyon Master and Slave deployments.
+
+### Quick Start: Web Administration Dashboard
+
+Launch the cybersecurity-themed administration dashboard with a single command:
+
+```powershell
+# Run from Windows PowerShell as Administrator:
+.\start-dashboard.ps1
+```
+The dashboard opens automatically at `http://127.0.0.1:5000`.
+
+### Quick Start: One-Command PowerShell Setup (CLI)
+
+```powershell
+# 1. Configure this computer as the MASTER (Teacher)
+.\install.ps1 -Role Master -RoomName "Computer Lab 1"
+
+# 2. Configure a client computer as a SLAVE (Student)
+.\install.ps1 -Role Slave -PublicKeyPath "\\master\keys\teacher_public_key.pem"
+
+# 3. Validate Master health and security
+powershell.exe -ExecutionPolicy Bypass -File .\scripts\Validate-Master.ps1
+
+# 4. Validate Slave health and private key isolation
+powershell.exe -ExecutionPolicy Bypass -File .\scripts\Validate-Slave.ps1
+```
+
+For full details on the REST API, SQLite database, 10-point diagnostic engine, and automated tests, see [dashboard/README.md](file:///E:/veyon/dashboard/README.md).
+
+---
+
 ## What is Veyon?
 
 Veyon is a free and open source software for monitoring and controlling

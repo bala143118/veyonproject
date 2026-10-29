@@ -1,0 +1,128 @@
+{
+    "AccessControl": {
+        "AccessControlRulesProcessingEnabled": "false",
+        "AccessRestrictedToUserGroups": "false"
+    },
+    "Authentication": {
+        "Method": 1,
+        "PrivateKeyBaseDir": "%GLOBALAPPDATA%\\keys\\private",
+        "PublicKeyBaseDir": "%GLOBALAPPDATA%\\keys\\public"
+    },
+    "BuiltinDirectory": {
+        "NetworkObjects": {
+            "JsonStoreArray": [
+                {
+                    "Name": "Default Classroom",
+                    "Type": 2,
+                    "Uid": "{b57d4826-266f-4f3f-95d7-5e16a2cc2f84}"
+                },
+                {
+                    "HostAddress": "localhost",
+                    "Name": "Student-PC-01",
+                    "ParentUid": "{b57d4826-266f-4f3f-95d7-5e16a2cc2f84}",
+                    "Type": 3,
+                    "Uid": "{2d76db2b-3f28-4fd0-b46a-e90ea64aeb26}"
+                }
+            ]
+        }
+    },
+    "Core": {
+        "ApplicationVersion": 11
+    },
+    "Directories": {
+        "ConfigurationTemplates": "%GLOBALAPPDATA%\\Config\\Templates",
+        "Screenshots": "%APPDATA%\\Screenshots",
+        "UserConfiguration": "%APPDATA%\\Config"
+    },
+    "Logging": {
+        "LogFileDirectory": "%TEMP%",
+        "LogFileRotationCount": 10,
+        "LogFileRotationEnabled": "false",
+        "LogFileSizeLimit": 100,
+        "LogFileSizeLimitEnabled": "false",
+        "LogLevel": 2,
+        "LogToStdErr": "true",
+        "LogToSystem": "false"
+    },
+    "Master": {
+        "AllowAddingHiddenLocations": "false",
+        "AutoAdjustMonitoringIconSize": "false",
+        "AutoOpenComputerSelectPanel": "false",
+        "AutoSelectCurrentLocation": "true",
+        "ComputerDoubleClickFeature": "{a18e545b-1321-4d4e-ac34-adc421c6e9c8}",
+        "ComputerMonitoringBackgroundColor": "#ffffff",
+        "ComputerMonitoringGridSizingMode": 0,
+        "ComputerMonitoringImageQuality": 2,
+        "ComputerMonitoringSortOrder": 0,
+        "ComputerMonitoringTextColor": "#000000",
+        "ComputerMonitoringThumbnailSpacing": 5,
+        "ComputerMonitoringUpdateInterval": 1000,
+        "ConfirmUnsafeActions": "false",
+        "HideComputerFilter": "false",
+        "HideEmptyLocations": "false",
+        "HideLocalComputer": "false",
+        "RemoteAccessImageQuality": 0,
+        "ShowCurrentLocationOnly": "false"
+    },
+    "Network": {
+        "DemoServerPort": 11400,
+        "FeatureWorkerManagerPort": 11300,
+        "FirewallExceptionEnabled": "1",
+        "LocalConnectOnly": "false",
+        "VeyonServerPort": 11100,
+        "VncServerPort": 11200
+    },
+    "NetworkObjectDirectory": {
+        "Plugin": "14bacaaa-ebe5-449c-b881-5b382f952571",
+        "UpdateInterval": 60
+    },
+    "Service": {
+        "ActiveSession": "false",
+        "Autostart": "true",
+        "ClipboardSynchronizationDisabled": "false",
+        "FailedAuthenticationNotifications": "true",
+        "HideTrayIcon": "false",
+        "MaximumSessionCount": 100,
+        "MultiSession": "false",
+        "RemoteConnectionNotifications": "true",
+        "ServerConnectionLimit": 128,
+        "SoftwareSASEnabled": "0"
+    },
+    "UI": {
+        "ColorScheme": 0,
+        "Language": "",
+        "Style": 0
+    },
+    "UltraVNC": {
+        "CaptureLayeredWindows": "true",
+        "DeskDupEngine": "true",
+        "LowAccuracy": "true",
+        "MaxCPU": 100,
+        "MultiMonitorSupport": "true",
+        "PollFullScreen": "true"
+    },
+    "UserGroups": {
+        "Backend": "00000000-0000-0000-0000-000000000000",
+        "UseDomainUserGroups": "false"
+    },
+    "VncConnection": {
+        "ConnectTimeout": 10000,
+        "ConnectionRetryInterval": 1000,
+        "FastFramebufferUpdateInterval": 100,
+        "FramebufferUpdateTimeout": 60000,
+        "InitialFramebufferUpdateTimeout": 10000,
+        "MessageWaitTimeout": 500,
+        "ReadTimeout": 30000,
+        "SocketKeepaliveCount": 5,
+        "SocketKeepaliveIdleTime": 1000,
+        "SocketKeepaliveInterval": 500,
+        "ThreadTerminationTimeout": 30000,
+        "UseCustomSettings": "false"
+    },
+    "VncServer": {
+        "Plugin": "39d7a07f-94db-4912-aa1a-c4df8aee3879"
+    },
+    "Windows": {
+        "SoftwareSASEnabled": "1"
+    }
+}

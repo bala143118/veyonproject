@@ -1,0 +1,89 @@
+{
+    "AccessControl": {
+        "AccessControlRulesProcessingEnabled": "false",
+        "AccessRestrictedToUserGroups": "false"
+    },
+    "Authentication": {
+        "Method": 1,
+        "PrivateKeyBaseDir": "%GLOBALAPPDATA%\\keys\\private",
+        "PublicKeyBaseDir": "%GLOBALAPPDATA%\\keys\\public"
+    },
+    "Core": {
+        "ApplicationVersion": 11
+    },
+    "Directories": {
+        "ConfigurationTemplates": "%GLOBALAPPDATA%\\Config\\Templates",
+        "Screenshots": "%APPDATA%\\Screenshots",
+        "UserConfiguration": "%APPDATA%\\Config"
+    },
+    "Logging": {
+        "LogFileDirectory": "%TEMP%",
+        "LogFileRotationCount": 10,
+        "LogFileRotationEnabled": "false",
+        "LogFileSizeLimit": 100,
+        "LogFileSizeLimitEnabled": "false",
+        "LogLevel": 2,
+        "LogToStdErr": "true",
+        "LogToSystem": "false"
+    },
+    "Network": {
+        "DemoServerPort": 11400,
+        "FeatureWorkerManagerPort": 11300,
+        "FirewallExceptionEnabled": "1",
+        "LocalConnectOnly": "false",
+        "VeyonServerPort": 11100,
+        "VncServerPort": 11200
+    },
+    "NetworkObjectDirectory": {
+        "Plugin": "14bacaaa-ebe5-449c-b881-5b382f952571"
+    },
+    "Service": {
+        "ActiveSession": "false",
+        "Autostart": "true",
+        "ClipboardSynchronizationDisabled": "false",
+        "FailedAuthenticationNotifications": "true",
+        "HideTrayIcon": "false",
+        "MaximumSessionCount": 100,
+        "MultiSession": "false",
+        "RemoteConnectionNotifications": "true",
+        "ServerConnectionLimit": 128,
+        "SoftwareSASEnabled": "0"
+    },
+    "UI": {
+        "ColorScheme": 0,
+        "Language": "",
+        "Style": 0
+    },
+    "UltraVNC": {
+        "CaptureLayeredWindows": "true",
+        "DeskDupEngine": "true",
+        "LowAccuracy": "true",
+        "MaxCPU": 100,
+        "MultiMonitorSupport": "true",
+        "PollFullScreen": "true"
+    },
+    "UserGroups": {
+        "Backend": "00000000-0000-0000-0000-000000000000",
+        "UseDomainUserGroups": "false"
+    },
+    "VncConnection": {
+        "ConnectTimeout": 10000,
+        "ConnectionRetryInterval": 1000,
+        "FastFramebufferUpdateInterval": 100,
+        "FramebufferUpdateTimeout": 60000,
+        "InitialFramebufferUpdateTimeout": 10000,
+        "MessageWaitTimeout": 500,
+        "ReadTimeout": 30000,
+        "SocketKeepaliveCount": 5,
+        "SocketKeepaliveIdleTime": 1000,
+        "SocketKeepaliveInterval": 500,
+        "ThreadTerminationTimeout": 30000,
+        "UseCustomSettings": "false"
+    },
+    "VncServer": {
+        "Plugin": "39d7a07f-94db-4912-aa1a-c4df8aee3879"
+    },
+    "Windows": {
+        "SoftwareSASEnabled": "1"
+    }
+}
